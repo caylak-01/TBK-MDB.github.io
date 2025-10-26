@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBK Model Diplomatic Breach (MDB) - Lead. Speak. Unite.</title>
+    <meta name="description" content="TBK Model Diplomatic Breach (MDB) is a premier Model United Nations conference dedicated to fostering diplomacy, leadership, and global understanding.">
+    <meta name="keywords" content="MUN, Model United Nations, Diplomacy, MDB, TBK, Conference">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #F3F4F6; cursor: none; }
+        .dark body { background-color: #111827; }
+        a, button, select { cursor: none; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+
+        #custom-cursor { position: fixed; width: 24px; height: 24px; border: 2px solid #1E3A8A; border-radius: 50%; left: 0; top: 0; pointer-events: none; transform: translate(-50%, -50%); transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; box-shadow: 0 0 15px rgba(30, 58, 138, 0.4); z-index: 9999; }
+        .dark #custom-cursor { border-color: #60a5fa; box-shadow: 0 0 15px rgba(96, 165, 250, 0.4); }
+        #custom-cursor.grow { width: 40px; height: 40px; background-color: rgba(30, 58, 138, 0.3); box-shadow: 0 0 25px rgba(30, 58, 138, 0.7); }
+        .dark #custom-cursor.grow { background-color: rgba(96, 165, 250, 0.3); box-shadow: 0 0 25px rgba(96, 165, 250, 0.7); }
+        #custom-cursor.clicked { animation: click-grow-shrink 0.3s ease-out; }
+        @keyframes click-grow-shrink { 50% { transform: translate(-50%, -50%) scale(1.2); } }
+
+        #about-mission-box { --mouse-x: 50%; --mouse-y: 50%; position: relative; }
+        #about-mission-box .overlay { background: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%); transition: background 0.2s ease-out; }
+        .dark #about-mission-box .overlay { background: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(17, 24, 39, 0.9) 0%, rgba(17, 24, 39, 0.8) 100%); }
+
+        .team-card { transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease; }
+        .team-card:not(.spotlight) { transform: scale(0.95); filter: blur(4px); opacity: 0.6; }
+        .team-card.spotlight { transform: scale(1.05); }
+        .spinning-border { position: relative; padding: 5px; border-radius: 50%; }
+        .spinning-border::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%; border: 3px solid transparent; border-top-color: #1E3A8A; border-right-color: #1E3A8A; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: spin 3s linear infinite; opacity: 0; transition: opacity 0.5s ease; }
+        .spotlight .spinning-border::before { opacity: 1; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .animated-word-container { position: relative; display: inline-block; vertical-align: bottom; }
+        .animated-word { position: absolute; left: 0; top: 0; color: #1E3A8A; white-space: nowrap; clip-path: inset(0 100% 0 0); }
+        .animated-word.is-visible { position: relative; }
+        
+        .logo-container { position: relative; perspective: 300px; }
+        .logo-text { display: block; transition: transform 0.5s ease, opacity 0.5s ease; }
+        
+        .hamburger-line { transition: all 0.3s ease-in-out; }
+        .hamburger-btn.open .line-top { transform: translateY(8px) rotate(45deg); }
+        .hamburger-btn.open .line-middle { opacity: 0; }
+        .hamburger-btn.open .line-bottom { transform: translateY(-8px) rotate(-45deg); }
+        #mobile-menu { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+        .scroll-down-arrow { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; z-index: 10; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -15px); } 60% { transform: translate(-50%, -7px); } }
+
+        .modal-backdrop { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); opacity: 0; visibility: hidden; z-index: 60; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.95); background-color: white; border-radius: 0.75rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto; opacity: 0; visibility: hidden; z-index: 70; transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; }
+        .dark .modal-content { background-color: #1f2937; }
+        .modal-open .modal-backdrop, .modal-open .modal-content { opacity: 1; visibility: visible; }
+        .modal-open .modal-content { transform: translate(-50%, -50%) scale(1); }
+
+        /* YENİ: Hero Video Stilleri */
+         #home { position: relative; overflow: hidden; }
+        #hero-video-bg { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; z-index: 0; transform: translateX(-50%) translateY(-50%); opacity: 0.15; object-fit: cover; }
+        #home::after { content: ''; position: absolute; inset: 0; background-color: rgba(243, 244, 246, 0.3); z-index: 1; }
+        .dark #home::after { background-color: rgba(17, 24, 39, 0.5); }
+        #home > .container { position: relative; z-index: 2; }
+
+    </style>
+    
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'diplomatic-blue': '#1E3A8A' } } } }
+    </script>
+</head>
+<body class="text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <div id="custom-cursor"></div>
+
+    <header class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-diplomatic-blue logo-container h-8 w-16 z-50">
+                <span id="logo-text-1" class="logo-text absolute">TBK</span>
+                <span id="logo-text-2" class="logo-text absolute" style="transform: rotateX(-90deg); opacity: 0;">MDB</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="hover:text-diplomatic-blue transition-colors">Home</a>
+                <a href="#about" class="hover:text-diplomatic-blue transition-colors">About Us</a>
+                <a href="#committees" class="hover:text-diplomatic-blue transition-colors">Committees</a>
+                <a href="#team" class="hover:text-diplomatic-blue transition-colors">Team</a>
+                <a href="#schedule" class="hover:text-diplomatic-blue transition-colors">Schedule</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative"><select id="language-switcher" class="bg-gray-200 dark:bg-gray-700 border-none rounded-md px-2 py-1 text-sm"><option value="en">EN</option><option value="tr">TR</option><option value="ar">AR</option></select></div>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"><svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><svg id="theme-toggle-light-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 016.465 3.636l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg></button>
+                    <a href="apply.html" class="bg-diplomatic-blue text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors">Apply</a>
+                </div>
+                <button id="hamburger-btn" class="md:hidden hamburger-btn z-50">
+                    <div class="space-y-1.5"><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-top"></span><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-middle"></span><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-bottom"></span></div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-40 transform translate-x-full">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-bold">
+            <a href="#home" class="mobile-link">Home</a><a href="#about" class="mobile-link">About Us</a><a href="#committees" class="mobile-link">Committees</a><a href="#team" class="mobile-link">Team</a><a href="#schedule" class="mobile-link">Schedule</a>
+            <a href="apply.html" class="mobile-link mt-4 bg-diplomatic-blue text-white px-6 py-3 rounded-lg">Apply Now</a>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="min-h-screen flex items-center bg-white dark:bg-gray-900 relative">
+             <video autoplay muted loop playsinline id="hero-video-bg">
+                <source src="videos/globe-loop.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+                <h1 data-key="hero_title" class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 dark:text-white">
+                    Shape the Future of <span class="animated-word-container text-diplomatic-blue"><span class="animated-word is-visible">Diplomacy</span><span class="animated-word">Innovation</span></span>
+                </h1>
+                <p data-key="slogan" class="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-semibold tracking-wider">Lead. Speak. Unite.</p>
+                <p class="mt-8 text-lg font-medium text-gray-700 dark:text-gray-400">October 24-27, 2026</p>
+                <a data-key="hero_button" href="apply.html" class="mt-8 inline-block bg-diplomatic-blue text-white font-bold text-lg px-10 py-4 rounded-lg shadow-lg hover:bg-blue-800 transition-transform transform hover:scale-105">Register Now</a>
+            </div>
+            <div class="scroll-down-arrow hidden md:block">
+                <svg class="w-8 h-8 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-white dark:bg-gray-900 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center" data-aos="fade-up"><h2 data-key="about_title" class="text-4xl font-bold">About Model Diplomatic Breach</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Forging Tomorrow's Leaders Through Diplomacy.</p></div>
+                <div id="about-mission-box" class="mt-16 rounded-lg shadow-xl overflow-hidden p-8 md:p-12" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" alt="Conference background" class="absolute inset-0 w-full h-full object-cover opacity-20 z-0">
+                    <div class="overlay absolute inset-0"></div>
+                    <div class="relative z-10 text-center max-w-4xl mx-auto"><h3 class="text-3xl font-bold text-diplomatic-blue">Our Mission & Vision</h3><p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">MDB was founded on the principle that diplomacy is the cornerstone of global progress. Our mission is to create a dynamic and intellectually stimulating platform where young minds can engage with complex international issues, develop critical thinking skills, and practice the art of negotiation.</p><p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">We envision a world where dialogue triumphs over conflict, and we believe that empowering the next generation of leaders is the most crucial step towards achieving it.</p></div>
+                </div>
+                <div class="mt-24"><h3 class="text-3xl font-bold text-center" data-aos="fade-up">Our Core Values</h3><div class="mt-12 grid md:grid-cols-3 gap-8"><div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="100"><svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg><h4 class="mt-4 text-xl font-bold">Leadership</h4><p class="mt-2 text-gray-600 dark:text-gray-400">Inspiring delegates to take initiative and guide discussions with confidence.</p></div><div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="200"><svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 4v4m-2-2h4M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5z"></path></svg><h4 class="mt-4 text-xl font-bold">Academic Excellence</h4><p class="mt-2 text-gray-600 dark:text-gray-400">Upholding the highest standards of research, debate, and procedure.</p></div><div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="300"><svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.707 9.293a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L15 7.414V10a1 1 0 11-2 0V7.414l-1.293 1.293a1 1 0 01-1.414 0z"></path></svg><h4 class="mt-4 text-xl font-bold">Global Unity</h4><p class="mt-2 text-gray-600 dark:text-gray-400">Fostering collaboration and understanding across different cultures.</p></div></div></div>
+                <div id="stats-container" class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"><div data-aos="zoom-in"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="5">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Years of Experience</p></div><div data-aos="zoom-in" data-aos-delay="100"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="10">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Committees per Year</p></div><div data-aos="zoom-in" data-aos-delay="200"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="20">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Countries Represented</p></div><div data-aos="zoom-in" data-aos-delay="300"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="500">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Delegates Hosted</p></div></div>
+            </div>
+        </section>
+
+        <section id="committees" class="py-20 bg-gray-50 dark:bg-gray-800">
+             <div class="container mx-auto px-6">
+                <div class="text-center" data-aos="fade-up"><h2 class="text-4xl font-bold">Our Committees</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">The Arenas of Debate.</p></div>
+                <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"><div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100"><h3 class="text-2xl font-bold text-diplomatic-blue">United Nations Security Council (UNSC)</h3><p class="mt-4 text-gray-600 dark:text-gray-400">Addressing critical matters of international peace and security.</p><span class="mt-4 inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">English</span><button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="United Nations Security Council (UNSC)" data-description="The UNSC is tasked with maintaining international peace and security. Delegates will tackle urgent global crises, negotiate resolutions, and employ strategic diplomacy in a fast-paced environment." data-agenda="Agenda Item: The Situation in the Arctic Circle - Territorial Disputes and Environmental Concerns.">View Details →</button></div><div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200"><h3 class="text-2xl font-bold text-diplomatic-blue">World Health Organization (WHO)</h3><p class="mt-4 text-gray-600 dark:text-gray-400">Tackling global health crises and formulating policies for a healthier future for all.</p><span class="mt-4 inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">English</span><button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="World Health Organization (WHO)" data-description="Delegates in the WHO will address pressing global health challenges, from pandemic preparedness to equitable access to healthcare, aiming to develop comprehensive international health policies." data-agenda="Agenda Item: Strengthening Global Health Security Frameworks in the Post-Pandemic Era.">View Details →</button></div><div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300"><h3 class="text-2xl font-bold text-diplomatic-blue" dir="rtl">اللجنة الأولى: نزع السلاح والأمن الدولي</h3><p class="mt-4 text-gray-600 dark:text-gray-400" dir="rtl">معالجة قضايا نزع السلاح ومنع الانتشار النووي لتعزيز السلام والأمن العالميين.</p><span class="mt-4 inline-block bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">العربية</span><button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="اللجنة الأولى: نزع السلاح والأمن الدولي (DISEC)" data-description="يتناول المندوبون في هذه اللجنة تحديات نزع السلاح المعقدة، وانتشار الأسلحة النووية، والتهديدات الأمنية الجديدة، بهدف صياغة قرارات تعزز الاستقرار العالمي." data-agenda="بند جدول الأعمال: دور التقنيات الناشئة في سباق التسلح العالمي وآليات الرقابة." dir="rtl"> عرض التفاصيل →</button></div></div>
+            </div>
+        </section>
+
+        <section id="team" class="py-20 bg-white dark:bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center" data-aos="fade-up"><h2 data-key="team_title" class="text-4xl font-bold">Meet the Minds Behind MDB</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">The dedicated team making MDB 2026 possible.</p></div>
+                <div id="team-grid" class="mt-16 flex flex-col items-center space-y-10">
+                    <div class="grid w-full gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/myv.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Muhammed Yusuf Vural</h3><p class="text-diplomatic-blue">Secretary-General</p></div>
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/tbk.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Muhammed Güçlüöver</h3><p class="text-diplomatic-blue">Director-General</p></div>
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/tbk.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Mehmet Selçuk Arı</h3><p class="text-diplomatic-blue">USG of Academics</p></div>
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/ismet.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">İsmet Tarık Tokgöz</h3><p class="text-diplomatic-blue">Head of Press</p></div>
+                    </div>
+                    <div class="grid w-full gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/tbk.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Burak Bayrakçı</h3><p class="text-diplomatic-blue">Logistics Coordinator</p></div>
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/tbk.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Mehmet Hatipoğlu</h3><p class="text-diplomatic-blue">Finance Officer</p></div>
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/ahmetyasin.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Ahmet Yasin Altınkeser</h3><p class="text-diplomatic-blue">Outreach Director</p></div>
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/ali.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Ali Zıvlak</h3><p class="text-diplomatic-blue">IT Manager</p></div>
+                    </div>
+                    <div class="w-full flex justify-center"><div class="grid gap-10 grid-cols-1 sm:grid-cols-2 w-full max-w-xl">
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/sitki.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Muhammet Sıtkı Karabağ</h3><p class="text-diplomatic-blue">New Position One</p></div>
+                        <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/tbk.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Yusuf Ziya Boyalı</h3><p class="text-diplomatic-blue">New Position Two</p></div>
+                    </div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="py-20 bg-gray-50 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center" data-aos="fade-up"><h2 class="text-4xl font-bold">Conference Schedule</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Countdown to the opening ceremony.</p></div>
+                <div id="countdown" class="mt-12 hidden md:flex justify-center space-x-4 md:space-x-8 text-center" data-aos="fade-up">
+                    <div><span id="days" class="text-4xl md:text-6xl font-bold text-diplomatic-blue">--</span><p class="text-sm">Days</p></div>
+                    <div><span id="hours" class="text-4xl md:text-6xl font-bold text-diplomatic-blue">--</span><p class="text-sm">Hours</p></div>
+                    <div><span id="minutes" class="text-4xl md:text-6xl font-bold text-diplomatic-blue">--</span><p class="text-sm">Minutes</p></div>
+                    <div><span id="seconds" class="text-4xl md:text-6xl font-bold text-diplomatic-blue">--</span><p class="text-sm">Seconds</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-t-lg p-2 z-30">
+        <div class="flex justify-around text-center">
+            <div><span id="mobile-days" class="text-2xl font-bold text-diplomatic-blue">--</span><p class="text-xs">Days</p></div>
+            <div><span id="mobile-hours" class="text-2xl font-bold text-diplomatic-blue">--</span><p class="text-xs">Hours</p></div>
+            <div><span id="mobile-minutes" class="text-2xl font-bold text-diplomatic-blue">--</span><p class="text-xs">Minutes</p></div>
+            <div><span id="mobile-seconds" class="text-2xl font-bold text-diplomatic-blue">--</span><p class="text-xs">Seconds</p></div>
+        </div>
+    </div>
+    
+    <footer class="bg-gray-800 dark:bg-black text-white">
+        <div class="container mx-auto py-8 px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="text-2xl font-bold">MDB</div>
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-400">
+                    <a href="#home" class="hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="hover:text-white transition-colors">About</a>
+                    <a href="#committees" class="hover:text-white transition-colors">Committees</a>
+                    <a href="#team" class="hover:text-white transition-colors">Team</a>
+                    <a href="#schedule" class="hover:text-white transition-colors">Schedule</a>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-700">
+            <div class="flex flex-col-reverse md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p class="text-sm text-gray-400 text-center md:text-left">&copy; 2025 TBK Model Diplomatic Breach. All Rights Reserved.</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.465c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.25-10a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.6 13.6v4.4h4.4v-4.4h-4.4zm-6.8 0v4.4h4.4v-4.4H6.8zm0-6.8v4.4h4.4V6.8H6.8zm6.8 0v4.4h4.4V6.8h-4.4zM4 22h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2z" /></svg></a>
+                    <a href="mailto:info@example.com" class="text-gray-400 hover:text-white transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="committee-modal-backdrop" class="modal-backdrop"></div>
+    <div id="committee-modal-content" class="modal-content">
+        <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold text-gray-900 dark:text-white">Committee Title</h3>
+                <button id="modal-close-btn" class="p-1 rounded-full text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <p id="modal-description" class="text-gray-600 dark:text-gray-300 mb-4">Committee description goes here...</p>
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">Agenda Item:</h4>
+            <p id="modal-agenda" class="text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 p-3 rounded">Agenda details...</p>
+            <div class="mt-6 flex justify-end">
+                 <a href="apply.html" class="bg-diplomatic-blue text-white px-5 py-2 rounded-md hover:bg-blue-800 transition-colors text-sm">Apply for this Committee</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 800, once: true });
+            
+            // Mobil Menü
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (hamburgerBtn && mobileMenu) {
+                const mobileLinks = document.querySelectorAll('.mobile-link');
+                hamburgerBtn.addEventListener('click', () => {
+                    hamburgerBtn.classList.toggle('open');
+                    mobileMenu.classList.toggle('translate-x-full');
+                    document.body.classList.toggle('overflow-hidden');
+                });
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburgerBtn.classList.remove('open');
+                        mobileMenu.classList.add('translate-x-full');
+                        document.body.classList.remove('overflow-hidden');
+                    });
+                });
+            }
+
+            // Özel İmleç ve Tıklama Animasyonu
+            const cursor = document.getElementById('custom-cursor');
+            if (cursor) {
+                const interactiveElements = document.querySelectorAll('a, button, select');
+                window.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+                    el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+                });
+                window.addEventListener('mousedown', () => cursor.classList.add('clicked'));
+                cursor.addEventListener('animationend', () => cursor.classList.remove('clicked'));
+            }
+
+            // Spotlight Efekti
+            const missionBox = document.getElementById('about-mission-box');
+            if (missionBox) {
+                missionBox.addEventListener('mousemove', (e) => {
+                    const rect = missionBox.getBoundingClientRect();
+                    missionBox.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+                    missionBox.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+                });
+            }
+
+            // Dil Çevirileri
+            const translations = {
+                en: { slogan: "Lead. Speak. Unite.", hero_button: "Register Now", team_title: "Meet the Minds Behind MDB", about_title: "About Model Diplomatic Breach" },
+                tr: { slogan: "Yön Ver. Söz Al. Birleştir.", hero_button: "Şimdi Kaydol", team_title: "MDB'nin Arkasındaki Ekiple Tanışın", about_title: "Model Diplomatic Breach Hakkında" },
+                ar: { slogan: "قُد. تَكَلَّم. وَحِّد.", hero_button: "سجل الآن", team_title: "تعرف على العقول المدبرة وراء MDB", about_title: "نبذة عن مؤتمر MDB الدبلوماسي" }
+            };
+            const langSwitcher = document.getElementById('language-switcher');
+            if(langSwitcher) {
+                langSwitcher.addEventListener('change', (event) => {
+                    const lang = event.target.value;
+                    document.querySelectorAll('[data-key]').forEach(element => {
+                        const key = element.getAttribute('data-key');
+                        if (translations[lang] && translations[lang][key]) { element.innerHTML = translations[lang][key]; }
+                    });
+                });
+            }
+
+            // Karanlık/Aydınlık Mod
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if(themeToggleBtn) {
+                const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+                const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+                if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                    themeToggleLightIcon.classList.remove('hidden');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    themeToggleDarkIcon.classList.remove('hidden');
+                }
+                themeToggleBtn.addEventListener('click', function() {
+                    themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+                    if (document.documentElement.classList.toggle('dark')) { localStorage.setItem('color-theme', 'dark'); } else { localStorage.setItem('color-theme', 'light'); }
+                });
+            }
+            
+            // Etkileşimli Takım Spotlight Animasyonu
+            const teamCards = document.querySelectorAll('.team-card'); 
+            if(teamCards.length > 0) {
+                let currentSpotlightIndex = 0;
+                let spotlightInterval;
+                const updateSpotlight = () => { teamCards.forEach((card, index) => card.classList.toggle('spotlight', index === currentSpotlightIndex)); };
+                const startInterval = () => {
+                    clearInterval(spotlightInterval);
+                    spotlightInterval = setInterval(() => {
+                        currentSpotlightIndex = (currentSpotlightIndex + 1) % teamCards.length;
+                        updateSpotlight();
+                    }, 2000);
+                };
+                const stopInterval = () => { clearInterval(spotlightInterval); };
+                teamCards.forEach((card, index) => {
+                    card.addEventListener('mouseenter', () => {
+                        stopInterval();
+                        currentSpotlightIndex = index;
+                        updateSpotlight();
+                    });
+                    card.addEventListener('mouseleave', () => { startInterval(); });
+                });
+                updateSpotlight(); 
+                startInterval();
+            }
+
+            // Geri Sayım Sayacı (Mobil & Masaüstü)
+            const conferenceDate = new Date("Oct 24, 2026 09:00:00").getTime();
+            let countdownInterval; 
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = conferenceDate - now;
+                if (distance < 0) {
+                    const liveMessage = "<div class='text-xl font-bold text-diplomatic-blue text-center w-full'>The Conference is Live!</div>";
+                    // #countdown (desktop) ve mobil alt çubuğu (md:hidden fixed) elementlerine canlı mesaj koy
+                    document.querySelectorAll('#countdown, .md\\:hidden.fixed').forEach(el => { if(el) el.innerHTML = liveMessage; });
+                    if(countdownInterval) clearInterval(countdownInterval);
+                    return;
+                }
+                const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+                
+                ['days', 'hours', 'minutes', 'seconds'].forEach(unit => {
+                    const desktopEl = document.getElementById(unit);
+                    const mobileEl = document.getElementById('mobile-' + unit);
+                    const value = { days, hours, minutes, seconds }[unit];
+                    if (desktopEl) desktopEl.innerText = value;
+                    if (mobileEl) mobileEl.innerText = value;
+                });
+            };
+            countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            // Sayı Sayacı Animasyonu
+            const statsContainer = document.getElementById('stats-container');
+            if (statsContainer) {
+                let hasAnimated = false;
+                const animateStat = (element) => {
+                    const goal = parseInt(element.dataset.goal); let current = 0;
+                    const increment = Math.ceil(goal / 100) || 1;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= goal) { element.innerText = goal; clearInterval(timer); } 
+                        else { element.innerText = current; }
+                    }, 20);
+                };
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting && !hasAnimated) {
+                        document.querySelectorAll('.stat-number').forEach(number => animateStat(number));
+                        hasAnimated = true; observer.unobserve(statsContainer);
+                    }
+                }, { threshold: 0.5 });
+                observer.observe(statsContainer);
+            }
+
+            // Ana Başlık "Perde" Animasyonu
+            const animatedWords = document.querySelectorAll('.animated-word');
+            if (animatedWords.length > 0) {
+                let currentWordIndex = 0;
+                const switchWords = () => {
+                    const currentWord = animatedWords[currentWordIndex];
+                    const nextWordIndex = (currentWordIndex + 1) % animatedWords.length;
+                    const nextWord = animatedWords[nextWordIndex];
+                    
+                    currentWord.style.transition = 'clip-path 1s cubic-bezier(0.77, 0, 0.175, 1)';
+                    currentWord.style.clipPath = 'inset(0 0 0 100%)';
+                    currentWord.classList.remove('is-visible');
+                    
+                    nextWord.classList.add('is-visible');
+                    nextWord.style.transition = 'none';
+                    nextWord.style.clipPath = 'inset(0 100% 0 0)';
+                    setTimeout(() => {
+                        nextWord.style.transition = 'clip-path 1s cubic-bezier(0.77, 0, 0.175, 1)';
+                        nextWord.style.clipPath = 'inset(0 0 0 0)';
+                    }, 50);
+                    currentWordIndex = nextWordIndex;
+                };
+                animatedWords[0].style.clipPath = 'inset(0 0 0 0)';
+                setInterval(switchWords, 3500);
+            }
+
+            // Logo Animasyonu
+            const logoText1 = document.getElementById('logo-text-1');
+            const logoText2 = document.getElementById('logo-text-2');
+            if (logoText1 && logoText2) {
+                let isLogo1Active = true;
+                setInterval(() => {
+                    if(isLogo1Active) {
+                        logoText1.style.transform = 'rotateX(90deg)'; logoText1.style.opacity = '0';
+                        logoText2.style.transform = 'rotateX(0deg)'; logoText2.style.opacity = '1';
+                    } else {
+                        logoText2.style.transform = 'rotateX(-90deg)'; logoText2.style.opacity = '0';
+                        logoText1.style.transform = 'rotateX(0deg)'; logoText1.style.opacity = '1';
+                    }
+                    isLogo1Active = !isLogo1Active;
+                }, 4000);
+            }
+
+            // Komite Detay Modalı
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+            const modalBackdrop = document.getElementById('committee-modal-backdrop');
+            const modalContent = document.getElementById('committee-modal-content');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            if (viewDetailsBtns.length > 0 && modalBackdrop && modalContent && modalCloseBtn) {
+                const modalTitle = document.getElementById('modal-title');
+                const modalDescription = document.getElementById('modal-description');
+                const modalAgenda = document.getElementById('modal-agenda');
+                const body = document.body;
+
+                const openModal = (title, description, agenda) => {
+                    if(modalTitle) modalTitle.textContent = title;
+                    if(modalDescription) modalDescription.textContent = description;
+                    if(modalAgenda) modalAgenda.textContent = agenda;
+                    body.classList.add('modal-open', 'overflow-hidden');
+                };
+
+                const closeModal = () => {
+                    body.classList.remove('modal-open', 'overflow-hidden');
+                };
+
+                viewDetailsBtns.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const title = button.dataset.title || 'Details';
+                        const description = button.dataset.description || 'No description available.';
+                        const agenda = button.dataset.agenda || 'No agenda specified.';
+                        openModal(title, description, agenda);
+                    });
+                });
+
+                modalCloseBtn.addEventListener('click', closeModal);
+                modalBackdrop.addEventListener('click', closeModal);
+            }
+
+        }); // DOMContentLoaded sonu
+    </script>
+</body>
+</html>

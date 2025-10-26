@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply - TBK Model Diplomatic Breach (MDB)</title>
+    <meta name="description" content="Apply to the TBK Model Diplomatic Breach (MDB) conference.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #F3F4F6; cursor: none; }
+        .dark body { background-color: #111827; }
+        a, button, select, input, textarea { cursor: none; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        #custom-cursor { position: fixed; width: 24px; height: 24px; border: 2px solid #1E3A8A; border-radius: 50%; left: 0; top: 0; pointer-events: none; transform: translate(-50%, -50%); transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; box-shadow: 0 0 15px rgba(30, 58, 138, 0.4); z-index: 9999; }
+        #custom-cursor.grow { width: 40px; height: 40px; background-color: rgba(30, 58, 138, 0.3); box-shadow: 0 0 25px rgba(30, 58, 138, 0.7); }
+        #custom-cursor.clicked { animation: click-grow-shrink 0.3s ease-out; }
+        @keyframes click-grow-shrink { 50% { transform: translate(-50%, -50%) scale(1.2); } }
+        .logo-container { position: relative; perspective: 300px; }
+        .logo-text { display: block; transition: transform 0.5s ease, opacity 0.5s ease; }
+        .hamburger-line { transition: all 0.3s ease-in-out; }
+        .hamburger-btn.open .line-top { transform: translateY(8px) rotate(45deg); }
+        .hamburger-btn.open .line-middle { opacity: 0; }
+        .hamburger-btn.open .line-bottom { transform: translateY(-8px) rotate(-45deg); }
+        #mobile-menu { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .form-step { transition: opacity 0.3s ease-out, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .form-step:not(.active) { opacity: 0; transform: translateX(-30px); position: absolute; pointer-events: none; }
+        .input-field { background-color: #F9FAFB; border: 1px solid #D1D5DB; color: #111827; font-size: 0.875rem; border-radius: 0.5rem; display: block; width: 100%; padding: 0.625rem; }
+        .dark .input-field { background-color: #374151; border-color: #4B5563; color: white; }
+        .next-btn, .prev-btn, .submit-btn { padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: background-color 0.2s; }
+        .next-btn, .submit-btn { background-color: #1E3A8A; color: white; }
+        .next-btn:hover, .submit-btn:hover { background-color: #1e40af; }
+        .prev-btn { background-color: #E5E7EB; color: #374151; }
+        .dark .prev-btn { background-color: #4B5563; color: #E5E7EB; }
+    </style>
+    
+    <script>
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'diplomatic-blue': '#1E3A8A' } } } }
+    </script>
+</head>
+<body class="text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <div id="custom-cursor"></div>
+
+    <header class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-diplomatic-blue logo-container h-8 w-16 z-50">
+                <span id="logo-text-1" class="logo-text absolute">TBK</span>
+                <span id="logo-text-2" class="logo-text absolute" style="transform: rotateX(-90deg); opacity: 0;">MDB</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#home" class="hover:text-diplomatic-blue transition-colors">Home</a>
+                <a href="index.html#about" class="hover:text-diplomatic-blue transition-colors">About Us</a>
+                <a href="index.html#committees" class="hover:text-diplomatic-blue transition-colors">Committees</a>
+                <a href="index.html#team" class="hover:text-diplomatic-blue transition-colors">Team</a>
+                <a href="index.html#schedule" class="hover:text-diplomatic-blue transition-colors">Schedule</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative"><select id="language-switcher" class="bg-gray-200 dark:bg-gray-700 border-none rounded-md px-2 py-1 text-sm"><option value="en">EN</option><option value="tr">TR</option><option value="ar">AR</option></select></div>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"><svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><svg id="theme-toggle-light-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 016.465 3.636l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg></button>
+                    <a href="apply.html" class="bg-diplomatic-blue text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors">Apply</a>
+                </div>
+                <button id="hamburger-btn" class="md:hidden hamburger-btn z-50">
+                    <div class="space-y-1.5"><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-top"></span><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-middle"></span><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-bottom"></span></div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-40 transform translate-x-full">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-bold">
+            <a href="index.html#home" class="mobile-link">Home</a><a href="index.html#about" class="mobile-link">About Us</a><a href="index.html#committees" class="mobile-link">Committees</a><a href="index.html#team" class="mobile-link">Team</a><a href="index.html#schedule" class="mobile-link">Schedule</a><a href="apply.html" class="mobile-link mt-4 bg-diplomatic-blue text-white px-6 py-3 rounded-lg">Apply Now</a>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-6 py-20">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-900 dark:text-white" data-aos="fade-up">Join Us</h1>
+            <p class="mt-4 text-lg text-center text-gray-600 dark:text-gray-300" data-aos="fade-up" data-aos-delay="100">Your diplomatic journey begins here.</p>
+            
+            <section class="mt-16" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="text-3xl font-bold text-center text-gray-900 dark:text-white">Fees & Packages</h2>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl border-t-4 border-diplomatic-blue">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Delegate (No Accommodation)</h3><p class="mt-4 text-4xl font-extrabold text-diplomatic-blue">€100</p>
+                        <ul class="mt-6 space-y-3 text-gray-600 dark:text-gray-300"><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Access to all committee sessions</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Lunch for 3 days</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Coffee breaks & snacks</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Conference merchandise</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Certificate of participation</li></ul>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl border-t-4 border-diplomatic-blue">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Delegate (with Accommodation)</h3><p class="mt-4 text-4xl font-extrabold text-diplomatic-blue">€250</p>
+                        <ul class="mt-6 space-y-3 text-gray-600 dark:text-gray-300"><li class="flex items-center font-semibold text-diplomatic-blue dark:text-blue-400"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Everything in the standard package</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>3 nights in a partner hotel</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Breakfast at the hotel</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Transportation to the venue</li><li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Access to social events</li></ul>
+                    </div>
+                </div>
+            </section>
+
+            <form id="application-form" class="mt-16 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl relative min-h-[500px] overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                <div class="mb-8"><div class="flex justify-between mb-2"><span id="step-counter" class="text-sm font-medium text-diplomatic-blue">Step 1 of 3</span><span id="step-name" class="text-sm font-medium text-gray-500 dark:text-gray-400">Personal Information</span></div><div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5"><div id="progress-bar" class="bg-diplomatic-blue h-2.5 rounded-full" style="width: 33%; transition: width 0.4s ease;"></div></div></div>
+                <div class="relative">
+                    <div class="form-step active">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div><label for="full_name" class="block mb-2 text-sm font-medium">What is your fullname?</label><input type="text" id="full_name" class="input-field" required></div>
+                            <div><label for="email" class="block mb-2 text-sm font-medium">Your E-Mail Address</label><input type="email" id="email" class="input-field" required></div>
+                            <div><label for="phone" class="block mb-2 text-sm font-medium">What is your phone number?</label><input type="tel" id="phone" class="input-field" required></div>
+                            <div><label for="gender" class="block mb-2 text-sm font-medium">What is your gender?</label><select id="gender" class="input-field" required><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div>
+                            <div class="md:col-span-2"><label for="birthday" class="block mb-2 text-sm font-medium">When is your birthday?</label><input type="date" id="birthday" class="input-field" required></div>
+                        </div>
+                        <div class="mt-8 flex justify-end"><button type="button" class="next-btn">Next Step &rarr;</button></div>
+                    </div>
+                    
+                    <div class="form-step">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div><label for="school" class="block mb-2 text-sm font-medium">What is your school?</label><input type="text" id="school" class="input-field" required></div>
+                            <div><label for="occupation" class="block mb-2 text-sm font-medium">What is your occupation?</label><input type="text" id="occupation" class="input-field" required></div>
+                            <div class="md:col-span-2"><label for="nationality" class="block mb-2 text-sm font-medium">What is your nationality?</label><select id="nationality" class="input-field" required><option value="">Select Country</option></select></div>
+                            <div class="md:col-span-2">
+                                <label class="block mb-2 text-sm font-medium">Languages</label>
+                                <div class="flex gap-4">
+                                    <select id="language-select" class="input-field flex-grow"><option value="">Select Language</option></select>
+                                    <select id="level-select" class="input-field w-1/3"><option value="">Level</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
+                                    <button type="button" id="add-language-btn" class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-md text-sm font-medium">+</button>
+                                </div>
+                                <div id="language-list" class="mt-3 space-y-2"></div>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex justify-between"><button type="button" class="prev-btn">&larr; Previous</button><button type="button" class="next-btn">Next Step &rarr;</button></div>
+                    </div>
+                    
+                    <div class="form-step">
+                        <div class="space-y-6">
+                            <div><label for="position" class="block mb-2 text-sm font-medium">Select a Position</label><select id="position" class="input-field" required><option value="">Select a Package</option><option value="Delegate (No Accommodation) - €100">Delegate (No Accommodation) - €100</option><option value="Delegate (with Accommodation) - €250">Delegate (with Accommodation) - €250</option></select></div>
+                            <div><label for="experiences" class="block mb-2 text-sm font-medium">Experiences</label><textarea id="experiences" rows="4" class="input-field" placeholder="Briefly describe your previous MUN or relevant experiences."></textarea></div>
+                            <div><label for="personal_note" class="block mb-2 text-sm font-medium">Personal Note (if you want)</label><textarea id="personal_note" rows="3" class="input-field" placeholder="Anything else you'd like to share?"></textarea></div>
+                        </div>
+                        <div class="mt-8 flex justify-between"><button type="button" class="prev-btn">&larr; Previous</button><button type="submit" class="submit-btn">Submit Application</button></div>
+                    </div>
+                </div>
+            </form>
+            <div class="text-center mt-8"><a href="admin-login.html" class="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">Admin Login</a></div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 dark:bg-black text-white">
+        <div class="container mx-auto py-8 px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="text-2xl font-bold">MDB</div>
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-400">
+                    <a href="index.html#home" class="hover:text-white transition-colors">Home</a>
+                    <a href="index.html#about" class="hover:text-white transition-colors">About</a>
+                    <a href="index.html#committees" class="hover:text-white transition-colors">Committees</a>
+                    <a href="index.html#team" class="hover:text-white transition-colors">Team</a>
+                    <a href="index.html#schedule" class="hover:text-white transition-colors">Schedule</a>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-700">
+            <div class="flex flex-col-reverse md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p class="text-sm text-gray-400 text-center md:text-left">&copy; 2025 TBK Model Diplomatic Breach. All Rights Reserved.</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.465c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.25-10a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" /></svg></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.6 13.6v4.4h4.4v-4.4h-4.4zm-6.8 0v4.4h4.4v-4.4H6.8zm0-6.8v4.4h4.4V6.8H6.8zm6.8 0v4.4h4.4V6.8h-4.4zM4 22h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2z" /></svg></a>
+                    <a href="mailto:info@example.com" class="text-gray-400 hover:text-white transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 800, once: true });
+
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (hamburgerBtn && mobileMenu) {
+                const mobileLinks = document.querySelectorAll('.mobile-link');
+                hamburgerBtn.addEventListener('click', () => {
+                    hamburgerBtn.classList.toggle('open');
+                    mobileMenu.classList.toggle('translate-x-full');
+                    document.body.classList.toggle('overflow-hidden');
+                });
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburgerBtn.classList.remove('open');
+                        mobileMenu.classList.add('translate-x-full');
+                        document.body.classList.remove('overflow-hidden');
+                    });
+                });
+            }
+
+            const cursor = document.getElementById('custom-cursor');
+            if (cursor) {
+                const interactiveElements = document.querySelectorAll('a, button, select, input, textarea');
+                window.addEventListener('mousemove', (e) => {
+                    cursor.style.left = `${e.clientX}px`;
+                    cursor.style.top = `${e.clientY}px`;
+                });
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+                    el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+                });
+                window.addEventListener('mousedown', () => cursor.classList.add('clicked'));
+                cursor.addEventListener('animationend', () => cursor.classList.remove('clicked'));
+            }
+
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if(themeToggleBtn) {
+                const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+                const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+                if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    themeToggleLightIcon.classList.remove('hidden'); document.documentElement.classList.add('dark');
+                } else {
+                    themeToggleDarkIcon.classList.remove('hidden'); document.documentElement.classList.remove('dark');
+                }
+                themeToggleBtn.addEventListener('click', function() {
+                    themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden');
+                    if (document.documentElement.classList.toggle('dark')) { localStorage.setItem('color-theme', 'dark'); } else { localStorage.setItem('color-theme', 'light'); }
+                });
+            }
+
+            const logoText1 = document.getElementById('logo-text-1');
+            const logoText2 = document.getElementById('logo-text-2');
+            if (logoText1 && logoText2) {
+                let isLogo1Active = true;
+                setInterval(() => {
+                    if(isLogo1Active) {
+                        logoText1.style.transform = 'rotateX(90deg)'; logoText1.style.opacity = '0';
+                        logoText2.style.transform = 'rotateX(0deg)'; logoText2.style.opacity = '1';
+                    } else {
+                        logoText2.style.transform = 'rotateX(-90deg)'; logoText2.style.opacity = '0';
+                        logoText1.style.transform = 'rotateX(0deg)'; logoText1.style.opacity = '1';
+                    }
+                    isLogo1Active = !isLogo1Active;
+                }, 4000);
+            }
+
+            const applicationForm = document.getElementById('application-form');
+            if(applicationForm) {
+                const formSteps = document.querySelectorAll('.form-step');
+                const nextBtns = document.querySelectorAll('.next-btn');
+                const prevBtns = document.querySelectorAll('.prev-btn');
+                const progressBar = document.getElementById('progress-bar');
+                const stepCounter = document.getElementById('step-counter');
+                const stepName = document.getElementById('step-name');
+
+                let currentStep = 0;
+                const stepNames = ["Personal Information", "Academic & Background", "Conference Details"];
+
+                const updateFormSteps = () => {
+                    formSteps.forEach((step, index) => {
+                        const isActive = index === currentStep;
+                        step.classList.toggle('active', isActive);
+                        step.style.position = isActive ? 'relative' : 'absolute';
+                        step.style.transform = isActive ? 'translateX(0)' : 'translateX(-30px)';
+                        step.style.opacity = isActive ? '1' : '0';
+                        step.style.pointerEvents = isActive ? 'auto' : 'none';
+                    });
+                    const progress = (currentStep / (formSteps.length - 1)) * 100;
+                    progressBar.style.width = `${progress}%`;
+                    stepCounter.textContent = `Step ${currentStep + 1} of ${formSteps.length}`;
+                    stepName.textContent = stepNames[currentStep];
+                };
+
+                nextBtns.forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (validateStep(currentStep)) {
+                            currentStep++;
+                            updateFormSteps();
+                        }
+                    });
+                });
+
+                prevBtns.forEach(button => {
+                    button.addEventListener('click', () => {
+                        currentStep--;
+                        updateFormSteps();
+                    });
+                });
+
+                const validateStep = (stepIndex) => {
+                    const inputs = formSteps[stepIndex].querySelectorAll('input[required], select[required]');
+                    let isValid = true;
+                    inputs.forEach(input => {
+                        if (!input.value) {
+                            isValid = false;
+                            input.classList.add('border-red-500');
+                        } else {
+                            input.classList.remove('border-red-500');
+                        }
+                    });
+                    if (!isValid) alert('Please fill all required fields.');
+                    return isValid;
+                };
+
+                const addLangBtn = document.getElementById('add-language-btn');
+                const langSelect = document.getElementById('language-select');
+                const levelSelect = document.getElementById('level-select');
+                const langList = document.getElementById('language-list');
+                let addedLanguages = [];
+                addLangBtn.addEventListener('click', () => {
+                    const lang = langSelect.value;
+                    const level = levelSelect.value;
+                    if(lang && level && !addedLanguages.find(l => l.lang === lang)) {
+                        addedLanguages.push({lang, level});
+                        renderLanguages();
+                        langSelect.value = '';
+                        levelSelect.value = '';
+                    }
+                });
+                const renderLanguages = () => {
+                    langList.innerHTML = '';
+                    addedLanguages.forEach((l, index) => {
+                        const langEl = document.createElement('div');
+                        langEl.className = 'flex justify-between items-center bg-gray-100 dark:bg-gray-700 p-2 rounded';
+                        langEl.innerHTML = `<span>${l.lang} - <strong>${l.level}</strong></span><button type="button" class="text-red-500 remove-lang-btn" data-index="${index}">&times;</button>`;
+                        langList.appendChild(langEl);
+                    });
+                };
+                langList.addEventListener('click', (e) => {
+                    if(e.target.classList.contains('remove-lang-btn')){
+                        addedLanguages.splice(parseInt(e.target.dataset.index), 1);
+                        renderLanguages();
+                    }
+                });
+                
+                const countrySelect = document.getElementById('nationality');
+                const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Turkey", "United Kingdom", "United States"];
+                countries.sort().forEach(c => countrySelect.innerHTML += `<option>${c}</option>`);
+
+                const languages = ["English", "Turkish", "Arabic", "German", "French", "Spanish", "Russian", "Chinese", "Japanese"];
+                languages.sort().forEach(l => langSelect.innerHTML += `<option>${l}</option>`);
+
+                // FORMSPREE ILE GÖNDERME - BASIT VE ETKILI
+                applicationForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    console.log("=== FORM GÖNDERİLİYOR ===");
+                    
+                    if (!validateStep(currentStep)) return;
+
+                    const formData = new FormData();
+                    
+                    // Tüm verileri ekle
+                    formData.append('full_name', document.getElementById('full_name').value);
+                    formData.append('email', document.getElementById('email').value);
+                    formData.append('phone', document.getElementById('phone').value);
+                    formData.append('gender', document.getElementById('gender').value);
+                    formData.append('birthday', document.getElementById('birthday').value);
+                    formData.append('school', document.getElementById('school').value);
+                    formData.append('occupation', document.getElementById('occupation').value);
+                    formData.append('nationality', document.getElementById('nationality').value);
+                    formData.append('position', document.getElementById('position').value);
+                    formData.append('experiences', document.getElementById('experiences').value);
+                    formData.append('personal_note', document.getElementById('personal_note').value);
+                    
+                    // Diller
+                    if (addedLanguages.length > 0) {
+                        formData.append('languages', JSON.stringify(addedLanguages));
+                    }
+                    
+                    // Formspree için ek bilgiler
+                    formData.append('_subject', 'Yeni MDB Başvurusu - ' + document.getElementById('full_name').value);
+                    formData.append('_replyto', document.getElementById('email').value);
+
+                    const submitBtn = document.querySelector('.submit-btn');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Gönderiliyor...';
+                    submitBtn.disabled = true;
+
+                    try {
+                        console.log("Formspree'ye gönderiliyor...");
+                        
+                        const response = await fetch('https://formspree.io/f/xzzkblgr', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        console.log("Response status:", response.status);
+                        
+                        if (response.ok) {
+                            const result = await response.json();
+                            console.log("Başarılı:", result);
+                            
+                            alert('✅ Başvurunuz başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.');
+                            
+                            // Formu sıfırla
+                            applicationForm.reset();
+                            addedLanguages = [];
+                            renderLanguages();
+                            currentStep = 0;
+                            updateFormSteps();
+                            
+                        } else {
+                            throw new Error('Formspree hatası: ' + response.status);
+                        }
+                        
+                    } catch (error) {
+                        console.error('Hata:', error);
+                        alert('❌ Gönderim hatası. Lütfen boyaligame@gmail.com adresine direkt e-posta gönderin.');
+                    } finally {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+
+                updateFormSteps();
+            }
+        });
+    </script>
+</body>
+</html>
