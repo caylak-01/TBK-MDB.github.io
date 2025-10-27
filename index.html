@@ -85,17 +85,17 @@
                 <span id="logo-text-2" class="logo-text absolute" style="transform: rotateX(-90deg); opacity: 0;">MDB</span>
             </a>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="hover:text-diplomatic-blue transition-colors">Home</a>
-                <a href="#about" class="hover:text-diplomatic-blue transition-colors">About Us</a>
-                <a href="#committees" class="hover:text-diplomatic-blue transition-colors">Committees</a>
-                <a href="#team" class="hover:text-diplomatic-blue transition-colors">Team</a>
-                <a href="#schedule" class="hover:text-diplomatic-blue transition-colors">Schedule</a>
+                <a href="#home" class="hover:text-diplomatic-blue transition-colors" data-key="nav_home">Home</a>
+                <a href="#about" class="hover:text-diplomatic-blue transition-colors" data-key="nav_about">About Us</a>
+                <a href="#committees" class="hover:text-diplomatic-blue transition-colors" data-key="nav_committees">Committees</a>
+                <a href="#team" class="hover:text-diplomatic-blue transition-colors" data-key="nav_team">Team</a>
+                <a href="#schedule" class="hover:text-diplomatic-blue transition-colors" data-key="nav_schedule">Schedule</a>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex items-center space-x-4">
                     <div class="relative"><select id="language-switcher" class="bg-gray-200 dark:bg-gray-700 border-none rounded-md px-2 py-1 text-sm"><option value="en">EN</option><option value="tr">TR</option><option value="ar">AR</option></select></div>
                     <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"><svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><svg id="theme-toggle-light-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 5.05A1 1 0 016.465 3.636l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg></button>
-                    <a href="apply.html" class="bg-diplomatic-blue text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors">Apply</a>
+                    <a href="apply.html" class="bg-diplomatic-blue text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors" data-key="nav_apply">Apply</a>
                 </div>
                 <button id="hamburger-btn" class="md:hidden hamburger-btn z-50">
                     <div class="space-y-1.5"><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-top"></span><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-middle"></span><span class="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 hamburger-line line-bottom"></span></div>
@@ -106,8 +106,8 @@
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg z-40 transform translate-x-full">
         <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-bold">
-            <a href="#home" class="mobile-link">Home</a><a href="#about" class="mobile-link">About Us</a><a href="#committees" class="mobile-link">Committees</a><a href="#team" class="mobile-link">Team</a><a href="#schedule" class="mobile-link">Schedule</a>
-            <a href="apply.html" class="mobile-link mt-4 bg-diplomatic-blue text-white px-6 py-3 rounded-lg">Apply Now</a>
+            <a href="#home" class="mobile-link" data-key="nav_home">Home</a><a href="#about" class="mobile-link" data-key="nav_about">About Us</a><a href="#committees" class="mobile-link" data-key="nav_committees">Committees</a><a href="#team" class="mobile-link" data-key="nav_team">Team</a><a href="#schedule" class="mobile-link" data-key="nav_schedule">Schedule</a>
+            <a href="apply.html" class="mobile-link mt-4 bg-diplomatic-blue text-white px-6 py-3 rounded-lg" data-key="nav_apply">Apply Now</a>
         </div>
     </div>
 
@@ -132,27 +132,76 @@
 
         <section id="about" class="py-20 bg-white dark:bg-gray-900 overflow-hidden">
             <div class="container mx-auto px-6">
-                <div class="text-center" data-aos="fade-up"><h2 data-key="about_title" class="text-4xl font-bold">About Model Diplomatic Breach</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Forging Tomorrow's Leaders Through Diplomacy.</p></div>
+                <div class="text-center" data-aos="fade-up"><h2 data-key="about_title" class="text-4xl font-bold">About Model Diplomatic Breach</h2><p data-key="about_subtitle" class="mt-2 text-lg text-gray-600 dark:text-gray-300">Forging Tomorrow's Leaders Through Diplomacy.</p></div>
                 <div id="about-mission-box" class="mt-16 rounded-lg shadow-xl overflow-hidden p-8 md:p-12" data-aos="zoom-in">
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop" alt="Conference background" class="absolute inset-0 w-full h-full object-cover opacity-20 z-0">
                     <div class="overlay absolute inset-0"></div>
-                    <div class="relative z-10 text-center max-w-4xl mx-auto"><h3 class="text-3xl font-bold text-diplomatic-blue">Our Mission & Vision</h3><p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">MDB was founded on the principle that diplomacy is the cornerstone of global progress. Our mission is to create a dynamic and intellectually stimulating platform where young minds can engage with complex international issues, develop critical thinking skills, and practice the art of negotiation.</p><p class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">We envision a world where dialogue triumphs over conflict, and we believe that empowering the next generation of leaders is the most crucial step towards achieving it.</p></div>
+                    <div class="relative z-10 text-center max-w-4xl mx-auto">
+                        <h3 data-key="mission_title" class="text-3xl font-bold text-diplomatic-blue">Our Mission & Vision</h3>
+                        <p data-key="mission_text1" class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">MDB was founded on the principle that diplomacy is the cornerstone of global progress. Our mission is to create a dynamic and intellectually stimulating platform where young minds can engage with complex international issues, develop critical thinking skills, and practice the art of negotiation.</p>
+                        <p data-key="mission_text2" class="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">We envision a world where dialogue triumphs over conflict, and we believe that empowering the next generation of leaders is the most crucial step towards achieving it.</p>
+                    </div>
                 </div>
-                <div class="mt-24"><h3 class="text-3xl font-bold text-center" data-aos="fade-up">Our Core Values</h3><div class="mt-12 grid md:grid-cols-3 gap-8"><div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="100"><svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg><h4 class="mt-4 text-xl font-bold">Leadership</h4><p class="mt-2 text-gray-600 dark:text-gray-400">Inspiring delegates to take initiative and guide discussions with confidence.</p></div><div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="200"><svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 4v4m-2-2h4M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5z"></path></svg><h4 class="mt-4 text-xl font-bold">Academic Excellence</h4><p class="mt-2 text-gray-600 dark:text-gray-400">Upholding the highest standards of research, debate, and procedure.</p></div><div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="300"><svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.707 9.293a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L15 7.414V10a1 1 0 11-2 0V7.414l-1.293 1.293a1 1 0 01-1.414 0z"></path></svg><h4 class="mt-4 text-xl font-bold">Global Unity</h4><p class="mt-2 text-gray-600 dark:text-gray-400">Fostering collaboration and understanding across different cultures.</p></div></div></div>
-                <div id="stats-container" class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"><div data-aos="zoom-in"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="5">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Years of Experience</p></div><div data-aos="zoom-in" data-aos-delay="100"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="10">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Committees per Year</p></div><div data-aos="zoom-in" data-aos-delay="200"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="20">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Countries Represented</p></div><div data-aos="zoom-in" data-aos-delay="300"><span class="stat-number text-5xl font-bold text-diplomatic-blue" data-goal="500">0</span><span class="text-5xl font-bold text-diplomatic-blue">+</span><p class="mt-2 text-gray-600 dark:text-gray-400">Delegates Hosted</p></div></div>
+                <div class="mt-24">
+                    <h3 data-key="values_title" class="text-3xl font-bold text-center" data-aos="fade-up">Our Core Values</h3>
+                    <div class="mt-12 grid md:grid-cols-3 gap-8">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="100">
+                            <svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            <h4 data-key="value_leadership" class="mt-4 text-xl font-bold">Leadership</h4>
+                            <p data-key="value_leadership_desc" class="mt-2 text-gray-600 dark:text-gray-400">Inspiring delegates to take initiative and guide discussions with confidence.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="200">
+                            <svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 4v4m-2-2h4M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5z"></path></svg>
+                            <h4 data-key="value_excellence" class="mt-4 text-xl font-bold">Academic Excellence</h4>
+                            <p data-key="value_excellence_desc" class="mt-2 text-gray-600 dark:text-gray-400">Upholding the highest standards of research, debate, and procedure.</p>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-lg text-center" data-aos="fade-up" data-aos-delay="300">
+                            <svg class="w-12 h-12 mx-auto text-diplomatic-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.707 9.293a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L15 7.414V10a1 1 0 11-2 0V7.414l-1.293 1.293a1 1 0 01-1.414 0z"></path></svg>
+                            <h4 data-key="value_unity" class="mt-4 text-xl font-bold">Global Unity</h4>
+                            <p data-key="value_unity_desc" class="mt-2 text-gray-600 dark:text-gray-400">Fostering collaboration and understanding across different cultures.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- İstatistik bölümü kaldırıldı -->
             </div>
         </section>
 
         <section id="committees" class="py-20 bg-gray-50 dark:bg-gray-800">
              <div class="container mx-auto px-6">
-                <div class="text-center" data-aos="fade-up"><h2 class="text-4xl font-bold">Our Committees</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">The Arenas of Debate.</p></div>
-                <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"><div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100"><h3 class="text-2xl font-bold text-diplomatic-blue">United Nations Security Council (UNSC)</h3><p class="mt-4 text-gray-600 dark:text-gray-400">Addressing critical matters of international peace and security.</p><span class="mt-4 inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">English</span><button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="United Nations Security Council (UNSC)" data-description="The UNSC is tasked with maintaining international peace and security. Delegates will tackle urgent global crises, negotiate resolutions, and employ strategic diplomacy in a fast-paced environment." data-agenda="Agenda Item: The Situation in the Arctic Circle - Territorial Disputes and Environmental Concerns.">View Details →</button></div><div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200"><h3 class="text-2xl font-bold text-diplomatic-blue">World Health Organization (WHO)</h3><p class="mt-4 text-gray-600 dark:text-gray-400">Tackling global health crises and formulating policies for a healthier future for all.</p><span class="mt-4 inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">English</span><button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="World Health Organization (WHO)" data-description="Delegates in the WHO will address pressing global health challenges, from pandemic preparedness to equitable access to healthcare, aiming to develop comprehensive international health policies." data-agenda="Agenda Item: Strengthening Global Health Security Frameworks in the Post-Pandemic Era.">View Details →</button></div><div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300"><h3 class="text-2xl font-bold text-diplomatic-blue" dir="rtl">اللجنة الأولى: نزع السلاح والأمن الدولي</h3><p class="mt-4 text-gray-600 dark:text-gray-400" dir="rtl">معالجة قضايا نزع السلاح ومنع الانتشار النووي لتعزيز السلام والأمن العالميين.</p><span class="mt-4 inline-block bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">العربية</span><button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="اللجنة الأولى: نزع السلاح والأمن الدولي (DISEC)" data-description="يتناول المندوبون في هذه اللجنة تحديات نزع السلاح المعقدة، وانتشار الأسلحة النووية، والتهديدات الأمنية الجديدة، بهدف صياغة قرارات تعزز الاستقرار العالمي." data-agenda="بند جدول الأعمال: دور التقنيات الناشئة في سباق التسلح العالمي وآليات الرقابة." dir="rtl"> عرض التفاصيل →</button></div></div>
+                <div class="text-center" data-aos="fade-up">
+                    <h2 data-key="committees_title" class="text-4xl font-bold">Our Committees</h2>
+                    <p data-key="committees_subtitle" class="mt-2 text-lg text-gray-600 dark:text-gray-300">The Arenas of Debate.</p>
+                </div>
+                <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-bold text-diplomatic-blue">United Nations Security Council (UNSC)</h3>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400">Addressing critical matters of international peace and security.</p>
+                        <span class="mt-4 inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">English</span>
+                        <button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="United Nations Security Council (UNSC)" data-description="The UNSC is tasked with maintaining international peace and security. Delegates will tackle urgent global crises, negotiate resolutions, and employ strategic diplomacy in a fast-paced environment." data-agenda="Agenda Item: The Situation in the Arctic Circle - Territorial Disputes and Environmental Concerns.">View Details →</button>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-2xl font-bold text-diplomatic-blue">World Health Organization (WHO)</h3>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400">Tackling global health crises and formulating policies for a healthier future for all.</p>
+                        <span class="mt-4 inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">English</span>
+                        <button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="World Health Organization (WHO)" data-description="Delegates in the WHO will address pressing global health challenges, from pandemic preparedness to equitable access to healthcare, aiming to develop comprehensive international health policies." data-agenda="Agenda Item: Strengthening Global Health Security Frameworks in the Post-Pandemic Era.">View Details →</button>
+                    </div>
+                    <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-2xl font-bold text-diplomatic-blue" dir="rtl">اللجنة الأولى: نزع السلاح والأمن الدولي</h3>
+                        <p class="mt-4 text-gray-600 dark:text-gray-400" dir="rtl">معالجة قضايا نزع السلاح ومنع الانتشار النووي لتعزيز السلام والأمن العالميين.</p>
+                        <span class="mt-4 inline-block bg-purple-100 text-purple-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">العربية</span>
+                        <button class="view-details-btn mt-6 block w-full text-center font-semibold text-diplomatic-blue hover:underline" data-title="اللجنة الأولى: نزع السلاح والأمن الدولي (DISEC)" data-description="يتناول المندوبون في هذه اللجنة تحديات نزع السلاح المعقدة، وانتشار الأسلحة النووية، والتهديدات الأمنية الجديدة، بهدف صياغة قرارات تعزز الاستقرار العالمي." data-agenda="بند جدول الأعمال: دور التقنيات الناشئة في سباق التسلح العالمي وآليات الرقابة." dir="rtl"> عرض التفاصيل →</button>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="team" class="py-20 bg-white dark:bg-gray-900">
             <div class="container mx-auto px-6">
-                <div class="text-center" data-aos="fade-up"><h2 data-key="team_title" class="text-4xl font-bold">Meet the Minds Behind MDB</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">The dedicated team making MDB 2026 possible.</p></div>
+                <div class="text-center" data-aos="fade-up">
+                    <h2 data-key="team_title" class="text-4xl font-bold">Meet the Minds Behind MDB</h2>
+                    <p data-key="team_subtitle" class="mt-2 text-lg text-gray-600 dark:text-gray-300">The dedicated team making MDB 2026 possible.</p>
+                </div>
                 <div id="team-grid" class="mt-16 flex flex-col items-center space-y-10">
                     <div class="grid w-full gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                         <div class="team-card text-center"><div class="spinning-border w-40 h-40 mx-auto"><img class="w-full h-full rounded-full object-cover shadow-lg" src="images/myv.jpg" alt="Photo of team member"></div><h3 class="mt-4 text-xl font-bold">Muhammed Yusuf Vural</h3><p class="text-diplomatic-blue">Secretary-General</p></div>
@@ -176,7 +225,10 @@
 
         <section id="schedule" class="py-20 bg-gray-50 dark:bg-gray-800">
             <div class="container mx-auto px-6">
-                <div class="text-center" data-aos="fade-up"><h2 class="text-4xl font-bold">Conference Schedule</h2><p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Countdown to the opening ceremony.</p></div>
+                <div class="text-center" data-aos="fade-up">
+                    <h2 data-key="schedule_title" class="text-4xl font-bold">Conference Schedule</h2>
+                    <p data-key="schedule_subtitle" class="mt-2 text-lg text-gray-600 dark:text-gray-300">Countdown to the opening ceremony.</p>
+                </div>
                 <div id="countdown" class="mt-12 hidden md:flex justify-center space-x-4 md:space-x-8 text-center" data-aos="fade-up">
                     <div><span id="days" class="text-4xl md:text-6xl font-bold text-diplomatic-blue">--</span><p class="text-sm">Days</p></div>
                     <div><span id="hours" class="text-4xl md:text-6xl font-bold text-diplomatic-blue">--</span><p class="text-sm">Hours</p></div>
@@ -201,11 +253,11 @@
             <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
                 <div class="text-2xl font-bold">MDB</div>
                 <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-gray-400">
-                    <a href="#home" class="hover:text-white transition-colors">Home</a>
-                    <a href="#about" class="hover:text-white transition-colors">About</a>
-                    <a href="#committees" class="hover:text-white transition-colors">Committees</a>
-                    <a href="#team" class="hover:text-white transition-colors">Team</a>
-                    <a href="#schedule" class="hover:text-white transition-colors">Schedule</a>
+                    <a href="#home" class="hover:text-white transition-colors" data-key="nav_home">Home</a>
+                    <a href="#about" class="hover:text-white transition-colors" data-key="nav_about">About</a>
+                    <a href="#committees" class="hover:text-white transition-colors" data-key="nav_committees">Committees</a>
+                    <a href="#team" class="hover:text-white transition-colors" data-key="nav_team">Team</a>
+                    <a href="#schedule" class="hover:text-white transition-colors" data-key="nav_schedule">Schedule</a>
                 </div>
             </div>
             <hr class="my-6 border-gray-700">
@@ -288,21 +340,153 @@
                 });
             }
 
-            // Dil Çevirileri
+            // Geliştirilmiş Dil Çevirileri
             const translations = {
-                en: { slogan: "Lead. Speak. Unite.", hero_button: "Register Now", team_title: "Meet the Minds Behind MDB", about_title: "About Model Diplomatic Breach" },
-                tr: { slogan: "Yön Ver. Söz Al. Birleştir.", hero_button: "Şimdi Kaydol", team_title: "MDB'nin Arkasındaki Ekiple Tanışın", about_title: "Model Diplomatic Breach Hakkında" },
-                ar: { slogan: "قُد. تَكَلَّم. وَحِّد.", hero_button: "سجل الآن", team_title: "تعرف على العقول المدبرة وراء MDB", about_title: "نبذة عن مؤتمر MDB الدبلوماسي" }
+                en: { 
+                    // Navigation
+                    nav_home: "Home",
+                    nav_about: "About Us",
+                    nav_committees: "Committees",
+                    nav_team: "Team",
+                    nav_schedule: "Schedule",
+                    nav_apply: "Apply",
+                    
+                    // Hero Section
+                    hero_title: "Shape the Future of",
+                    slogan: "Lead. Speak. Unite.",
+                    hero_button: "Register Now",
+                    
+                    // About Section
+                    about_title: "About Model Diplomatic Breach",
+                    about_subtitle: "Forging Tomorrow's Leaders Through Diplomacy.",
+                    mission_title: "Our Mission & Vision",
+                    mission_text1: "MDB was founded on the principle that diplomacy is the cornerstone of global progress. Our mission is to create a dynamic and intellectually stimulating platform where young minds can engage with complex international issues, develop critical thinking skills, and practice the art of negotiation.",
+                    mission_text2: "We envision a world where dialogue triumphs over conflict, and we believe that empowering the next generation of leaders is the most crucial step towards achieving it.",
+                    values_title: "Our Core Values",
+                    value_leadership: "Leadership",
+                    value_leadership_desc: "Inspiring delegates to take initiative and guide discussions with confidence.",
+                    value_excellence: "Academic Excellence",
+                    value_excellence_desc: "Upholding the highest standards of research, debate, and procedure.",
+                    value_unity: "Global Unity",
+                    value_unity_desc: "Fostering collaboration and understanding across different cultures.",
+                    
+                    // Committees Section
+                    committees_title: "Our Committees",
+                    committees_subtitle: "The Arenas of Debate.",
+                    
+                    // Team Section
+                    team_title: "Meet the Minds Behind MDB",
+                    team_subtitle: "The dedicated team making MDB 2026 possible.",
+                    
+                    // Schedule Section
+                    schedule_title: "Conference Schedule",
+                    schedule_subtitle: "Countdown to the opening ceremony."
+                },
+                tr: { 
+                    // Navigation
+                    nav_home: "Ana Sayfa",
+                    nav_about: "Hakkımızda",
+                    nav_committees: "Komiteler",
+                    nav_team: "Ekip",
+                    nav_schedule: "Program",
+                    nav_apply: "Başvur",
+                    
+                    // Hero Section
+                    hero_title: "Geleceği Şekillendirin",
+                    slogan: "Liderlik Et. Konuş. Birleştir.",
+                    hero_button: "Hemen Kaydol",
+                    
+                    // About Section
+                    about_title: "Model Diplomatic Breach Hakkında",
+                    about_subtitle: "Diplomasi Yoluyla Yarının Liderlerini Yetiştirmek.",
+                    mission_title: "Misyonumuz ve Vizyonumuz",
+                    mission_text1: "MDB, diplomasinin küresel ilerlemenin temel taşı olduğu ilkesi üzerine kurulmuştur. Misyonumuz, genç zihinlerin karmaşık uluslararası konularla ilgilenebileceği, eleştirel düşünme becerileri geliştirebileceği ve müzakere sanatını uygulayabileceği dinamik ve entelektüel olarak teşvik edici bir platform oluşturmaktır.",
+                    mission_text2: "Diyaloğun çatışmaya üstün geldiği bir dünya hayal ediyoruz ve bir sonraki liderler neslini güçlendirmenin buna ulaşmada en önemli adım olduğuna inanıyoruz.",
+                    values_title: "Temel Değerlerimiz",
+                    value_leadership: "Liderlik",
+                    value_leadership_desc: "Delegeleri inisiyatif almaya ve tartışmalara güvenle öncülük etmeye teşvik etmek.",
+                    value_excellence: "Akademik Mükemmeliyet",
+                    value_excellence_desc: "Araştırma, tartışma ve prosedürde en yüksek standartları korumak.",
+                    value_unity: "Küresel Birlik",
+                    value_unity_desc: "Farklı kültürler arasında işbirliği ve anlayışı teşvik etmek.",
+                    
+                    // Committees Section
+                    committees_title: "Komitelerimiz",
+                    committees_subtitle: "Tartışma Arenaları.",
+                    
+                    // Team Section
+                    team_title: "MDB'nin Arkasındaki Ekip ile Tanışın",
+                    team_subtitle: "MDB 2026'yı mümkün kılan özverili ekip.",
+                    
+                    // Schedule Section
+                    schedule_title: "Konferans Programı",
+                    schedule_subtitle: "Açılış törenine geri sayım."
+                },
+                ar: { 
+                    // Navigation
+                    nav_home: "الرئيسية",
+                    nav_about: "من نحن",
+                    nav_committees: "اللجان",
+                    nav_team: "الفريق",
+                    nav_schedule: "الجدول",
+                    nav_apply: "قدم الآن",
+                    
+                    // Hero Section
+                    hero_title: "شكل المستقبل من خلال",
+                    slogan: "قُد. تَكَلَّم. وَحِّد.",
+                    hero_button: "سجل الآن",
+                    
+                    // About Section
+                    about_title: "حول مؤتمر MDB الدبلوماسي",
+                    about_subtitle: "صياغة قادة الغد من خلال الدبلوماسية.",
+                    mission_title: "مهمتنا ورؤيتنا",
+                    mission_text1: "تأسس MDB على مبدأ أن الدبلوماسية هي حجر الزاوية للتقدم العالمي. مهمتنا هي إنشاء منصة ديناميكية ومحفزة فكريًا حيث يمكن للعقول الشابة الانخراط في القضايا الدولية المعقدة، وتطوير مهارات التفكير النقدي، وممارسة فن التفاوض.",
+                    mission_text2: "نتصور عالماً ينتصر فيه الحوار على الصراع، ونعتقد أن تمكين الجيل القادم من القادة هو الخطوة الأكثر أهمية لتحقيق ذلك.",
+                    values_title: "قيمنا الأساسية",
+                    value_leadership: "القيادة",
+                    value_leadership_desc: "إلهام المندوبين لاتخاذ المبادرة وتوجيه المناقشات بثقة.",
+                    value_excellence: "التفوق الأكاديمي",
+                    value_excellence_desc: "الالتزام بأعلى معايير البحث والمناقشة والإجراءات.",
+                    value_unity: "الوحدة العالمية",
+                    value_unity_desc: "تعزيز التعاون والتفاهم بين مختلف الثقافات.",
+                    
+                    // Committees Section
+                    committees_title: "لجاننا",
+                    committees_subtitle: "ساحات النقاش.",
+                    
+                    // Team Section
+                    team_title: "تعرف على العقول المدبرة وراء MDB",
+                    team_subtitle: "الفريق المتفاني الذي يجعل MDB 2026 ممكنًا.",
+                    
+                    // Schedule Section
+                    schedule_title: "جدول المؤتمر",
+                    schedule_subtitle: "العد التنازلي لحفل الافتتاح."
+                }
             };
+
             const langSwitcher = document.getElementById('language-switcher');
             if(langSwitcher) {
-                langSwitcher.addEventListener('change', (event) => {
-                    const lang = event.target.value;
+                // Sayfa yüklendiğinde mevcut dili kontrol et
+                const updateTranslations = (lang) => {
                     document.querySelectorAll('[data-key]').forEach(element => {
                         const key = element.getAttribute('data-key');
-                        if (translations[lang] && translations[lang][key]) { element.innerHTML = translations[lang][key]; }
+                        if (translations[lang] && translations[lang][key]) { 
+                            element.innerHTML = translations[lang][key]; 
+                        }
                     });
+                };
+
+                // Dil değiştirici event listener
+                langSwitcher.addEventListener('change', (event) => {
+                    const lang = event.target.value;
+                    updateTranslations(lang);
+                    localStorage.setItem('preferred-language', lang);
                 });
+
+                // Sayfa yüklendiğinde tercih edilen dili kontrol et
+                const preferredLang = localStorage.getItem('preferred-language') || 'en';
+                langSwitcher.value = preferredLang;
+                updateTranslations(preferredLang);
             }
 
             // Karanlık/Aydınlık Mod
@@ -377,28 +561,6 @@
             };
             countdownInterval = setInterval(updateCountdown, 1000);
             updateCountdown();
-
-            // Sayı Sayacı Animasyonu
-            const statsContainer = document.getElementById('stats-container');
-            if (statsContainer) {
-                let hasAnimated = false;
-                const animateStat = (element) => {
-                    const goal = parseInt(element.dataset.goal); let current = 0;
-                    const increment = Math.ceil(goal / 100) || 1;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= goal) { element.innerText = goal; clearInterval(timer); } 
-                        else { element.innerText = current; }
-                    }, 20);
-                };
-                const observer = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting && !hasAnimated) {
-                        document.querySelectorAll('.stat-number').forEach(number => animateStat(number));
-                        hasAnimated = true; observer.unobserve(statsContainer);
-                    }
-                }, { threshold: 0.5 });
-                observer.observe(statsContainer);
-            }
 
             // Ana Başlık "Perde" Animasyonu
             const animatedWords = document.querySelectorAll('.animated-word');
